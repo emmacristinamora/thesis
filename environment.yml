@@ -1,0 +1,28 @@
+name: thesis-env
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - jupyterlab
+  - pandas=1.5.3
+  - numpy=1.23.5
+  - matplotlib=3.6.3
+  - seaborn=0.12.2
+  - scikit-learn=1.2.2
+  - spacy=3.5.4
+  - nltk=3.8.1
+  - gensim=4.3.1
+  - ipywidgets=8.0.6
+
+  - pip:
+      - torch==2.0.1
+      - transformers==4.32.0
+      - sentence-transformers==2.2.2
+      - bertopic==0.15.0
+      - datasets==2.14.4
+      - accelerate==0.21.0
+      - evaluate==0.4.0
+      - tqdm==4.65.0
