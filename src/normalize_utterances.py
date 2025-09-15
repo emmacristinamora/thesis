@@ -18,11 +18,11 @@ CLEANED_DIR.mkdir(parents=True, exist_ok=True)
 metadata = pd.read_csv(METADATA_FILE)
 metadata.columns = metadata.columns.str.strip()
 metadata["filename"] = metadata["filename"].str.replace(".txt", "", regex=False)
-print(f"✅ Loaded metadata with {len(metadata)} rows.")
+print(f"Loaded metadata with {len(metadata)} rows.")
 
 # === GET ALL UTTERANCE FILES === #
 utterance_files = sorted(PROCESSED_DIR.glob("*_utterances.csv"))
-print(f"✅ Found {len(utterance_files)} utterance files.")
+print(f"Found {len(utterance_files)} utterance files.")
 
 # === NORMALIZE SPEAKER NAMES === #
 def normalize_speaker_name(name: str) -> str:
@@ -71,7 +71,7 @@ def match_role(name: str, canonical_map: dict, debate_id: str) -> str:
         if debate_id in ambiguous_resolution_cache:
             return ambiguous_resolution_cache[debate_id]
 
-        print(f"\n🟡 Ambiguous speaker name: '{name}' in debate {debate_id}")
+        print(f"\nAmbiguous speaker name: '{name}' in debate {debate_id}")
         while True:
             choice = input("Who is 'President' referring to? (R / D / I / M): ").strip().upper()
             if choice in ["R", "D", "I", "M"]:
@@ -88,7 +88,7 @@ def match_role(name: str, canonical_map: dict, debate_id: str) -> str:
 
 # === PROCESS ALL FILES === #
 def normalize_all_speakers():
-    print("🚀 Starting speaker normalization...")
+    print("Starting speaker normalization...")
 
     for file in tqdm(utterance_files, desc="Normalizing speakers", ncols=100):
         try:
@@ -97,7 +97,7 @@ def normalize_all_speakers():
             meta_row = metadata[metadata["filename"] == debate_id]
 
             if meta_row.empty:
-                print(f"❌ No metadata for debate_id: {debate_id}, skipping.")
+                print(f"No metadata for debate_id: {debate_id}, skipping.")
                 continue
 
             row = meta_row.iloc[0]
@@ -123,12 +123,12 @@ def normalize_all_speakers():
             # save result
             output_path = CLEANED_DIR / file.name
             df.to_csv(output_path, index=False)
-            print(f"✅ Saved: {output_path.name}")
+            print(f"Saved: {output_path.name}")
 
         except Exception as e:
-            print(f"❌ Error processing {file.name}: {e}")
+            print(f"Error processing {file.name}: {e}")
 
-    print("🎉 All speakers normalized.")
+    print("All speakers normalized.")
 
 # === MAIN ENTRY === #
 if __name__ == "__main__":
