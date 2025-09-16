@@ -195,7 +195,7 @@ def main():
     print(f"[INFO] Reading {INPUT_FILE}")
     df = pd.read_csv(INPUT_FILE)
 
-    # Initialize columns with correct dtypes
+    # initialize columns with correct dtypes
     if "notes" not in df.columns:
         df["notes"] = pd.Series([np.nan] * len(df), dtype="object")
     for col in ["econ", "soc", "econ_std", "soc_std"]:
