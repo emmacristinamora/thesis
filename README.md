@@ -1,66 +1,73 @@
-# Debates, Discourse, and Media  
-*A Computational Analysis of Temporal Shifts in U.S. Presidential Debates and Media Framing Across the Political Spectrum*
+# Political Discourse Analysis in U.S. Presidential Debates and Media (1960–2024)
 
-## 🧠 Overview
-
-This project explores how key political concepts (e.g. *freedom*, *security*, *truth*) are framed and rhetorically deployed in U.S. presidential debates over time, and how these framings align with or diverge from coverage in ideologically distinct media outlets.  
-It is the basis for my Bachelor's thesis in Artificial Intelligence & Economics at Bocconi University.
+## Abstract
+This study explores how U.S. political discourse has evolved from 1960 to 2024, focusing on presidential debates and, to a lesser extent, ideologically aligned media. Using a multi-layered computational pipeline, we investigate changes in political language across themes, sentiment, framing, rhetoric, and ideological content. While the public often perceives a dramatic deterioration in political discourse, our results reveal a more nuanced picture: political language has grown more negative, fragmented, and emotionally charged, but not to the extreme levels often feared. Instead, we identify a steady discursive drift—ideologically stable within parties, but increasingly asymmetrical across them. We argue that these shifts, while moderate in magnitude, have substantial implications for how language encodes political identity, frames public debate, and ultimately sustains or undermines democratic discourse.
 
 ---
 
-## 🗂️ Project Structure
+## Repository Structure
 
-| Folder/File | Description |
-|-------------|-------------|
-| `01_preprocessing.ipynb` | Load, clean, and structure debate and media texts; tokenization and segmentation |
-| `02_exploration_topics_terms.ipynb` | Frequency analysis, topic modeling (BERTopic), and TF-IDF to identify key terms |
-| `03_framing_analysis.ipynb` | Zero-shot classification of utterances into high-level frames (e.g., security, morality) |
-| `04_rhetoric_modeling.ipynb` | Rhetorical strategy classification (acclaim, attack, defense) using Benoit’s Functional Theory |
-| `05_sentiment_emotion.ipynb` | Sentiment and emotion detection around key concepts |
-| `06_semantic_polarization.ipynb` | Embedding-based analysis of ideological drift across time and party |
-| `07_debate_media_alignment.ipynb` | Compare debate and media framing using zero-shot and SBERT similarity |
-| `08_visualization_dashboard.ipynb` | Generate final plots for inclusion in the thesis |
-
----
-
-## 📁 Data Sources
-
-- **Debates**: U.S. Commission on Presidential Debates (public transcripts)
-- **Media**: TBD — selection in progress with attention to political balance and topic coverage
-
-> 🔒 *Raw data is excluded from version control (`/data/`) for size and privacy reasons.*
-
----
-
-## 🛠️ Requirements
-
-To replicate the analysis, create a virtual environment and install dependencies from `requirements.txt` (to be added). Core packages include:
-
-- `transformers` (for zero-shot models)
-- `sentence-transformers`
-- `bertopic`
-- `scikit-learn`
-- `spaCy`
-- `pandas`, `matplotlib`, `seaborn`
-
----
-
-## 📌 Notes
-
-- Notebooks are modular and ordered by number.  
-- Each notebook is designed to be run independently once the preprocessed data is available.  
-- The analysis focuses on interpretability, reproducibility, and robustness.
-
----
-
-## 📄 License
-
-This repository is for academic use only and part of a Bachelor's thesis submitted to Bocconi University, 2025.
+```
+thesis/
+│
+├── data/                       # All datasets (debates, media, labels, intermediate files)
+│   ├── debates_full.csv
+│   ├── media_balanced.csv
+│   ├── distribution_sentiment.csv
+│   ├── distribution_emotion.csv
+│   ├── distribution_frames.csv
+│   ├── debates_metadata.csv
+│   └── ... (see folder for full structure)
+│
+├── notebooks/                 # Jupyter Notebooks for each stage of analysis
+│   ├── 01_preprocessing.ipynb
+│   ├── 02_topic_modeling.ipynb
+│   ├── 03_media_topic_alignment.ipynb
+│   ├── 04_framing_analysis.ipynb
+│   ├── 05_sentiment_emotion.ipynb
+│   ├── 06_rhetorical_analysis.ipynb
+│   ├── 07_ideological_drift.ipynb
+│   ├── 08_aggregate_results.ipynb
+│   └── 09_findings.ipynb
+│
+├── src/                       # Python scripts used in the pipeline
+│   ├── extract_debates.py
+│   ├── normalize_utterances.py
+│   ├── media_parse_factiva.py
+│   ├── media_dataset_cleaning.py
+│   ├── rhetoric_api_annotation.py
+│   ├── ideology_api_annotation.py
+│   └── ... (others for dataset creation)
+│
+├── results/                   # All generated figures and visualizations
+│   ├── final_findings/
+│   ├── topic_modeling/
+│   └── figures/
+│
+├── models/                    # Saved model files or embedding arrays
+│
+├── requirements.txt           # Python package dependencies
+├── environment.yml            # Conda environment file
+└── README.md                  # This file
+```
 
 ---
 
-## 🙋‍♀️ Author
+## Instructions
 
-**Emma Mora**  
-BSc Mathematical and Computing Sciences for Artificial Intelligence, Bocconi University  
-Email: *emma.mora@studbocconi.it*  
+1. Clone this repository
+2. Set up the environment using `environment.yml` or `requirements.txt`
+3. Run notebooks sequentially from `01_preprocessing.ipynb` to `09_findings.ipynb`
+4. All outputs will be saved in `/data` and `/results`
+
+---
+
+## Acknowledgements
+
+The author thanks Professor [Name] for guidance in shaping the project scope and feedback on results. While the thesis was completed independently, the direction and framing benefited from earlier conceptual conversations.
+
+---
+
+## License
+
+This project is intended for academic and non-commercial use.
