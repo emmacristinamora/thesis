@@ -64,7 +64,7 @@ thesis/
 
 ## Acknowledgements
 
-The author thanks Professor [Name] for guidance in shaping the project scope and feedback on results. While the thesis was completed independently, the direction and framing benefited from earlier conceptual conversations.
+The author thanks Professor Schwarz for guidance in shaping the project scope and feedback on results. While the thesis was completed independently, the direction and framing benefited from earlier conceptual conversations.
 
 ---
 
